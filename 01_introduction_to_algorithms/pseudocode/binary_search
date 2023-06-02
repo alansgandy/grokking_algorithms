@@ -1,0 +1,55 @@
+Define a class BinarySearch with the following methods:
+
+1. search_iterative() Method:
+    INPUT: list, item
+    BEGIN
+        SET low to 0
+        SET high to LENGTH of list - 1
+
+        WHILE low is LESS THAN OR EQUAL TO high
+            SET mid to FLOOR DIVISION of (low + high) by 2
+            SET guess to list item at index mid
+
+            IF guess EQUALS TO item THEN
+                RETURN mid
+            END IF
+
+            IF guess is GREATER THAN item THEN
+                SET high to mid - 1
+            ELSE
+                SET low to mid + 1
+            END IF
+        END WHILE
+
+        RETURN None
+    END
+
+2. search_recursive() Method:
+    INPUT: list, low, high, item
+    BEGIN
+        IF high is GREATER THAN OR EQUAL TO low THEN
+            SET mid to FLOOR DIVISION of (high + low) by 2
+            SET guess to list item at index mid
+
+            IF guess EQUALS TO item THEN
+                RETURN mid
+            END IF
+
+            IF guess is GREATER THAN item THEN
+                RETURN result of search_recursive() Method with parameters: list, low, mid - 1, item
+            ELSE
+                RETURN result of search_recursive() Method with parameters: list, mid + 1, high, item
+            END IF
+        ELSE
+            RETURN None
+        END IF
+    END
+END class definition
+
+At MAIN:
+    INITIALIZE bs as INSTANCE OF BinarySearch
+    SET my_list to [1, 3, 5, 7, 9]
+
+    PRINT result of bs's search_iterative() Method with parameters: my_list, 3
+    PRINT result of bs's search_iterative() Method with parameters: my_list, -1
+END MAIN
