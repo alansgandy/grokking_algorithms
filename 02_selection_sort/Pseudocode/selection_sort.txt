@@ -1,0 +1,23 @@
+FUNCTION findSmallest(arr):
+    SET smallest TO arr[0]
+    SET smallest_index TO 0
+    FOR i FROM 1 TO length of arr - 1:
+        IF arr[i] < smallest THEN
+            SET smallest_index TO i
+            SET smallest TO arr[i]
+        END IF
+    END FOR
+    RETURN smallest_index
+END FUNCTION
+
+FUNCTION selectionSort(arr):
+    SET newArr TO empty list
+    FOR i FROM 0 TO length of arr - 1:
+        SET smallest TO findSmallest(arr)
+        ADD arr[smallest] TO newArr
+        REMOVE arr[smallest] FROM arr
+    END FOR
+    RETURN newArr
+END FUNCTION
+
+CALL selectionSort with [5, 3, 6, 2, 10]
